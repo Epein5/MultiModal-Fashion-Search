@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Matches</title>
+    <style>
+        /* Reset styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Navigation Bar Styles */
+        nav {
+            background-color: #333;
+            overflow: hidden;
+        }
+
+        nav a {
+            float: left;
+            color: #f2f2f2;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+            font-size: 17px;
+        }
+
+        nav a:hover {
+            background-color: #ddd;
+            color: #333;
+        }
+
+        /* Body Styles */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+            padding: 20px;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        #matchesContainer {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        #matchesContainer li {
+            list-style: none;
+            margin: 10px;
+            padding: 10px;
+            background-color: #fff;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+            text-align: center;
+        }
+
+        #matchesContainer img {
+            max-width: 200px;
+            height: auto;
+        }
+
+        a {
+            display: block;
+            text-align: center;
+            margin-top: 20px;
+            color: #333;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav>
+        <a href="#">Home</a>
+        <a href="#">Shop</a>
+        <a href="#">About</a>
+        <a href="#">Contact</a>
+    </nav>
+
+    <h1>Matches</h1>
+    <div id="matchesContainer">
+        {% if matches %}
+        <ul>
+            {% for match in matches %}
+            <li><img src="{{ match }}" alt="Match Image"></li>
+            {% endfor %}
+        </ul>
+        {% else %}
+        <p>No matches found</p>
+        {% endif %}
+    </div>
+    <a href="/">Go back</a>
+</body>
+</html>
