@@ -36,22 +36,29 @@ This project utilizes the CLIP(Contrastive Language-Image Pre-Training) model to
        pip install -r requirements.txt
 
 5. Preprocess the data:
-- Run `Code/44kpreprocessing.ipynb` to create a CSV file with the following structure:
+   - Run `Code/44kpreprocessing.ipynb` to create a CSV file with the following structure:
+     ```
+     image,        caption,                                                          caption_number,  id
   
-  ```
-  image,        caption,                                                          caption_number,  id
-  
-  15970.jpg,    Checked Navy Blue Shirts for Men with Long Sleeves,                0,              0
-  53759.jpg,    Solid Grey Tshirts for Men with Short Sleeves and Polo Collar,     0,              1
-  1855.jpg,     Printed Grey Tshirts for Men with Short Sleeves and Round Neck,    0,              2
-  30805.jpg,    Striped Green Shirts for Men with Long Sleeves,                    0,              3
-  26960.jpg,    Solid Purple Shirts for Women with Short Sleeves,                  0,              4
-  ```
+      15970.jpg,    Checked Navy Blue Shirts for Men with Long Sleeves,                0,              0
+      53759.jpg,    Solid Grey Tshirts for Men with Short Sleeves and Polo Collar,     0,              1
+      1855.jpg,     Printed Grey Tshirts for Men with Short Sleeves and Round Neck,    0,              2
+      30805.jpg,    Striped Green Shirts for Men with Long Sleeves,                    0,              3
+      26960.jpg,    Solid Purple Shirts for Women with Short Sleeves,                  0,              4
+     ```
+
+   **Note:** If you have multiple captions for one image, use the following format for `captions.csv`:
+     ```
+     image,        caption,                                                          caption_number,  id
+     15970.jpg,    Caption no 1,                                                     0,               0
+     15970.jpg,    Caption no 2,                                                     1,               0
+     ```
+   Ensure that all images have the same number of captions.
 
 6. Train the model:
-- Run `Code/train.ipynb`
-- Adjust the paths for saving Models and pickels as needed
-  
+   - Run `Code/train.ipynb`
+   - Adjust the paths for saving Models and pickels as needed
+   - If using multiple captions per image, set `num_workers` in the `CFG` class to 1
   The training process will generate a graph showing the validation and training loss:
   
 ![loss (1)](https://github.com/Epein5/MultiModal-Fashion-Search/assets/110723354/e6395f5d-e2ac-48da-80b6-795c8058578b)
