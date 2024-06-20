@@ -1,4 +1,6 @@
-/Datasets
+/Datasets/44k
+/Datasets/fashion-dataset
+/Datasets/preprocessed.csv
 /venv
 dataset.csv
 /Models

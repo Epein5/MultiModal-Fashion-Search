@@ -18,10 +18,10 @@ from sklearn.model_selection import train_test_split
 
 class CFG:
     debug = False
-    image_path = "../Datasets/44k/Images"
+    image_path = "../Datasets/Images"
     model_path = "../Models/20ephocs.pt"
     embeddings_path = "../pikels/20ephochs_all_image_embeddings.pkl"
-    df_path = "../Code/captions.csv"
+    df_path = "../Datasets/captions.csv"
     captions_path = "."
     batch_size = 8
     num_workers = 0
