@@ -38,7 +38,7 @@ async def serve_html(request: Request):
 #     return templates.TemplateResponse("matches.html", {"request": request, "matches": matches})
 
 @app.post("/find_matches")
-async def find_matches_endpoint(request: Request, prompt: str = Form(...), n: int = 9):
+async def find_matches_endpoint(request: Request, prompt: str = Form(...), n: int = 8):
     matches = match_finder.find_matches(query=prompt, n=n)
     matches = [f"/datasets/{match}" for match in matches]
     return templates.TemplateResponse("matches.html", {"request": request, "matches": matches})

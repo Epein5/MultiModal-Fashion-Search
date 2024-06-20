@@ -1,17 +1,62 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Find Matches</title>
-    <link rel="stylesheet" href="/static/style.css">
-</head>
-<body>
-    <h1>Find Matches</h1>
-    <div>
-        <form action="/find_matches" method="post">
-            <label for="promptInput">Enter a prompt:</label>
-            <input type="text" id="promptInput" name="prompt" />
-            <button type="submit">Find Matches</button>
-        </form>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MultiModal Fashion Search</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/static/stylee.css" />
+  </head>
+  <body>
+    <div class="landing-page">
+      <div class="container">
+        <nav class="header-area">
+          <div class="logo">AI for  <b>Fashion Search</b></div>
+          <ul class="links">
+            <li>Home</li>
+            <li>About Us</li>
+            <!-- <li>Work</li> -->
+            <li>Info</li>
+            <li>Get Started</li>
+          </ul>
+        </nav>
+        <div class="hero">
+          <div class="info">
+            <h1>MultiModal Fashion Search</h1>
+            <p>
+              Tired of endlessly scrolling through endless fashion catalogs?
+
+                Effortlessly discover your next fashion obsession with just a prompt. 
+              
+                Simply search a Text "Eg:Green kurthas for women OR Striped Shirt with Short Sleeves," 
+              
+                and our AI-powered fashion assistant 
+
+                will curate the top 10 must-have pieces tailored to your search.
+
+                Say goodbye to endless browsing and hello to a personalized, trendy wardrobe.
+            </p>
+            <div>
+              <form action="/find_matches" method="post">
+                  <!-- <label for="promptInput">Enter a prompt:</label>
+                  <input type="text" id="promptInput" name="prompt" /> -->
+                  <label for="promptInput" style="font-family: 'Montserrat', sans-serif; font-size: 18px; color: #333;"></label>
+                  <input type="text" id="promptInput" name="prompt" style="padding: 10px; border: 2px solid #ccc; border-radius: 4px; font-family: 'Roboto', sans-serif; font-size: 16px; width: 300px;" />
+                  <button type="submit">Find Matches</button>
+              </form>
+          </div>
+            <!-- <button>LET'S GET STARTED</button> -->
+          </div>
+          <div class="image">
+            <img src="/static/h.png" alt="" />
+          </div>
+        </div>
+      </div>
     </div>
-</body>
+  </body>
 </html>

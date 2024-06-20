@@ -69,21 +69,3 @@ function displayMatches(matches) {
   }
 }
 
-// function displayMatches(matches) {
-//   matchesContainer.innerHTML = '';
-//   if (matches.length === 0) {
-//     matchesContainer.innerHTML = '<p>No matches found</p>';
-//   } else {
-//     const matchesList = document.createElement('ul');
-//     matches.forEach(match => {
-//       const matchItem = document.createElement('li');
-//       const img = document.createElement('img');
-//       img.src = match;
-//       img.alt = 'Match Image';
-//       img.onerror = () => { img.src = '/static/default_image.jpg'; }; // Fallback image
-//       matchItem.appendChild(img);
-//       matchesList.appendChild(matchItem);
-//     });
-//     matchesContainer.appendChild(matchesList);
-//   }
-// }

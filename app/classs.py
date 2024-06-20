@@ -178,7 +178,7 @@ class MatchFinder:
 
         self.dataframe = pd.read_csv(CFG.df_path)
 
-    def find_matches(self, query, n=9):
+    def find_matches(self, query, n=8):
         tokenizer = DistilBertTokenizer.from_pretrained(CFG.text_tokenizer)
         encoded_query = tokenizer([query])
         batch = {
@@ -195,20 +195,41 @@ class MatchFinder:
         text_embeddings_n = F.normalize(text_embeddings, p=2, dim=-1)
 
         dot_similarity = text_embeddings_n @ image_embeddings_n.T
-        print(dot_similarity)
+        # print(dot_similarity)
 
         values, indices = torch.topk(dot_similarity.squeeze(0), n * 5)
-        print(indices)
+        # print(indices)
         matches = [self.dataframe['image'].values[idx] for idx in indices[::5]]
 
-        print(matches)
+        # print(matches)
         return matches
 
-        # _, axes = plt.subplots(3, 3, figsize=(10, 10))
-        # for match, ax in zip(matches, axes.flatten()):
-        #     image = cv2.imread(f"{CFG.image_path}/{match}")
-        #     image = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
-        #     ax.imshow(image)
-        #     ax.axis("off")
+class YourClas:
+    def __init__(self):
+        self.model = CLIPModel().to(CFG.device)  # Initialize your model
+        self.valid_image_embeddings = None  # Initialize your image embeddings
+        self.dataframe = None  # Initialize your dataframe
 
-        # plt.show()
+    def find_matches(self, query, n=8):
+        tokenizer = DistilBertTokenizer.from_pretrained(CFG.text_tokenizer)
+        encoded_query = tokenizer([query], return_tensors='pt')
+
+        with torch.no_grad():
+            batch = {key: tensor.to(self.device) for key, tensor in encoded_query.items()}
+            text_features = self.model.text_encoder(
+                input_ids=batch["input_ids"], attention_mask=batch["attention_mask"]
+            )
+            text_embeddings = self.model.text_projection(text_features)
+
+        image_embeddings_n = F.normalize(self.valid_image_embeddings, p=2, dim=-1).to(self.device)
+        text_embeddings_n = F.normalize(text_embeddings, p=2, dim=-1)
+
+        dot_similarity = text_embeddings_n @ image_embeddings_n.T
+        values, indices = torch.topk(dot_similarity.squeeze(0), n * 5)
+
+        # Move indices to the same device as dataframe['image'].values
+        indices = indices.to('cpu')
+
+        matches = [self.dataframe['image'].values[idx] for idx in indices[::5]]
+
+        return matches
