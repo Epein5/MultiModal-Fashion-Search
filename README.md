@@ -33,9 +33,11 @@ This project utilizes the CLIP(Contrastive Language-Image Pre-Training) model to
 
 4. Install dependencies:
 
-       pip install -r requirements.txt
+    - I am using python verison 3.10.13 torch version '2.1.0' and CUDA version 11.8
 
-5. Preprocess the data:
+           pip install -r requirements.txt
+
+6. Preprocess the data:
    - Run `Code/44kpreprocessing.ipynb` to create a CSV file with the following structure:
      ```
      image,        caption,                                                          caption_number,  id
@@ -55,7 +57,7 @@ This project utilizes the CLIP(Contrastive Language-Image Pre-Training) model to
      ```
    Ensure that all images have the same number of captions.
 
-6. Train the model:
+7. Train the model:
    - Run `Code/train.ipynb`
    - Adjust the paths for saving Models and pickels as needed
    - If using multiple captions per image, set `num_workers` in the `CFG` class to 1
