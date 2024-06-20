@@ -1,0 +1,12 @@
+numpy
+pandas
+opencv-python
+tqdm
+Pillow
+matplotlib
+albumentations
+scikit-learn
+jinja2
+timm
+transformers
+requests
